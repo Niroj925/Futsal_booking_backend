@@ -1,12 +1,13 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNumber, IsString } from "class-validator";
+import { IsString } from "class-validator";
+import { IsPhoneNumber } from "src/common/decorators/validateContact.decorator";
 
 export class CreateAdminDto {
     @IsString()
     @ApiProperty()
     name:string;
 
-    @IsNumber()
+    @IsPhoneNumber({message:'Invalid phone number'})
     @ApiProperty()
     phone:number
 }

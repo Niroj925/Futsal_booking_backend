@@ -3,15 +3,19 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { GlobalExceptionFilter } from './common/exceptions/globalException.filter';
+import helmet from 'helmet';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
     origin: "*",
     credentials: true
-  }); 
-  app.setGlobalPrefix('api/v1');
+  });
   
+  app.use(helmet());
+
+  app.setGlobalPrefix('api/v1');
+
   // Swagger setup
   const config = new DocumentBuilder()
     .setTitle('Futsal')

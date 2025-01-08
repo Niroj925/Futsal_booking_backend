@@ -12,6 +12,8 @@ import { FutsalCourtModule } from './modules/futsal-court/futsal-court.module';
 import { BookingModule } from './modules/booking/booking.module';
 import { ReviewModule } from './modules/review/review.module';
 import databaseConfig from './config/db.config';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -19,6 +21,12 @@ import databaseConfig from './config/db.config';
       isGlobal: true,
     }),
     TypeOrmModule.forRoot(databaseConfig),
+    ThrottlerModule.forRoot([
+      {
+        limit: 10,//10 request per minutes
+        ttl: 60000,
+      }
+    ]),
     AuthModule,
     SuperAdminModule,
     AdminModule,
@@ -29,6 +37,14 @@ import databaseConfig from './config/db.config';
     ReviewModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard
+    }
+
+
+  ],
 })
 export class AppModule { }

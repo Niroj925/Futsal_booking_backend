@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserController } from './user.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { authEntity } from 'src/entites/auth.entity';
-import { userEntity } from 'src/entites/user.entity';
+import { authEntity } from 'src/entity/auth.entity';
+import { userEntity } from 'src/entity/user.entity';
 import { hash } from 'src/common/helpers/hash.helper';
 
 

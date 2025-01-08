@@ -3,12 +3,12 @@ import { CreateBookingDto } from './dto/create-booking.dto';
 import { UpdateBookingDto } from './dto/update-booking.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
-import { bookingEntity } from 'src/entites/booking.entity';
-import { paymentEntity } from 'src/entites/payment.entity';
+import { bookingEntity } from 'src/entity/booking.entity';
+import { paymentEntity } from 'src/entity/payment.entity';
 import { bookingStatus, paymentMethod, paymentStatus } from 'src/common/constants/index.constant';
-import { userEntity } from 'src/entites/user.entity';
-import { futsalCourtEntity } from 'src/entites/futsalCourt.entity';
-import { priceEntity } from 'src/entites/priceSchema.entity';
+import { userEntity } from 'src/entity/user.entity';
+import { futsalCourtEntity } from 'src/entity/futsalCourt.entity';
+import { priceEntity } from 'src/entity/priceSchema.entity';
 @Injectable()
 export class BookingService {
   constructor(

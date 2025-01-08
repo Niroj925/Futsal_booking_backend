@@ -4,8 +4,8 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { CreateAuthDto } from '../auth/dto/create-auth.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
-import { authEntity } from 'src/entites/auth.entity';
-import { userEntity } from 'src/entites/user.entity';
+import { authEntity } from 'src/entity/auth.entity';
+import { userEntity } from 'src/entity/user.entity';
 import { hash } from 'src/common/helpers/hash.helper';
 import { roleType } from 'src/common/constants/index.constant';
 

@@ -3,7 +3,7 @@ import { CreateAuthDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { authEntity } from 'src/entites/auth.entity';
+import { authEntity } from 'src/entity/auth.entity';
 import { Token } from 'src/common/helpers/token.helper';
 import { hash } from 'src/common/helpers/hash.helper';
 import { JwtPayload } from 'src/common/types/index.types';

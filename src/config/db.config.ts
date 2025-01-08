@@ -8,8 +8,8 @@ const databaseConfig: TypeOrmModuleOptions = {
     username: process.env.PG_USER,
     password: process.env.PG_PASSWORD,
     database: process.env.PG_DATABASE,
-    synchronize: true,
-    logging: false,
+    synchronize: true,//process.env.NODE-ENV==='Development'
+    logging: false,//process.env.NODE-ENV==='Development'
     entities: [__dirname + '/../**/*.entity{.ts,.js}'],
     // ssl: {
     //     rejectUnauthorized: false

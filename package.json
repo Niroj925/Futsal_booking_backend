@@ -17,7 +17,13 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "typeorm": "ts-node --require tsconfig-paths/register ./node_modules/typeorm/cli",
+    "migration:run": "npm run typeorm migration:run -- -d ./src/config/typeorm.config.ts",
+    "migration:generate": "npm run typeorm -- -d ./src/config/typeorm.config.ts migration:generate ./src/database/migrations/Migration_$(date +%Y%m%d%H%M%S)_$npm_config_name",
+    "migration:create": "npm run typeorm -- migration:create ./src/database/migrations/$npm_config_name",
+    "migration:revert": "npm run typeorm -- -d ./src/config/typeorm.config.ts migration:revert",
+    "migration:show": "npm run typeorm -- migration:show -d ./src/config/typeorm.config.ts"
   },
   "dependencies": {
     "@nestjs/cache-manager": "^2.2.2",
@@ -28,6 +34,7 @@
     "@nestjs/passport": "^10.0.3",
     "@nestjs/platform-express": "^10.4.3",
     "@nestjs/swagger": "^7.4.2",
+    "@nestjs/throttler": "^6.3.0",
     "@nestjs/typeorm": "^10.0.2",
     "argon2": "^0.40.1",
     "class-transformer": "^0.5.1",
@@ -35,6 +42,7 @@
     "cloudinary": "^2.5.1",
     "date-fns": "^3.6.0",
     "dotenv": "^16.4.5",
+    "helmet": "^8.0.0",
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
     "node-fetch": "^3.3.2",

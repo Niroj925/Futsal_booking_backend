@@ -3,8 +3,8 @@ import { CreateFutsalDto, CreateLocationDto } from './dto/create-futsal.dto';
 import { UpdateFutsalDto } from './dto/update-futsal.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { futsalEntity } from 'src/entites/futsal.entity';
-import { futsalImageEntity } from 'src/entites/futsalImage.entity';
+import { futsalEntity } from 'src/entity/futsal.entity';
+import { futsalImageEntity } from 'src/entity/futsalImage.entity';
 
 interface Futsal {
   id: string;  // Update to string if the repository returns id as string

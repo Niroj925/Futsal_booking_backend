@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { Token } from 'src/common/helpers/token.helper';
 import { hash } from 'src/common/helpers/hash.helper';
-import { authEntity } from 'src/entites/auth.entity';
+import { authEntity } from 'src/entity/auth.entity';
 import { AtStrategy } from 'src/common/strategy/at.strategy';
 import { RtStrategy } from 'src/common/strategy/rt.strategy';
 

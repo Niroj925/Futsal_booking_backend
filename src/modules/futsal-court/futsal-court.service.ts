@@ -4,9 +4,9 @@ import { UpdateFutsalCourtDto } from './dto/update-futsal-court.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeepPartial, Repository } from 'typeorm';
 import { PriceSchemDto } from './dto/create-priceSchem.dto';
-import { futsalCourtEntity } from 'src/entites/futsalCourt.entity';
-import { futsalImageEntity } from 'src/entites/futsalImage.entity';
-import { priceEntity } from 'src/entites/priceSchema.entity';
+import { futsalCourtEntity } from 'src/entity/futsalCourt.entity';
+import { futsalImageEntity } from 'src/entity/futsalImage.entity';
+import { priceEntity } from 'src/entity/priceSchema.entity';
 import { availabilityStatus } from 'src/common/constants/index.constant';
 
 @Injectable()

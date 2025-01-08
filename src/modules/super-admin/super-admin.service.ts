@@ -4,11 +4,11 @@ import { UpdateSuperAdminDto } from './dto/update-super-admin.dto';
 import { CreateAuthDto } from '../auth/dto/create-auth.dto';
 import { DataSource, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { authEntity } from 'src/entites/auth.entity';
+import { authEntity } from 'src/entity/auth.entity';
 import { hash } from 'src/common/helpers/hash.helper';
 import { roleType } from 'src/common/constants/index.constant';
-import { superAdminEntity } from 'src/entites/superAdmin.entity';
-import { adminEntity } from 'src/entites/admin.entity';
+import { superAdminEntity } from 'src/entity/superAdmin.entity';
+import { adminEntity } from 'src/entity/admin.entity';
 
 
 @Injectable()

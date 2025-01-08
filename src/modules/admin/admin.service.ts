@@ -3,7 +3,7 @@ import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { adminEntity } from 'src/entites/admin.entity';
+import { adminEntity } from 'src/entity/admin.entity';
 import { PaginationDto } from 'src/common/dto/pagination.dto';
 
 @Injectable()

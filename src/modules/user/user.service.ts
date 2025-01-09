@@ -61,7 +61,7 @@ export class UserService {
     return user;
   }
 
- async update(id: string, updateUserDto: UpdateUserDto) {
+ async update(id: string, updateUserDto: CreateUserDto) {
     const admin = await this.userRepository.findOne({
       where: { id },
     });

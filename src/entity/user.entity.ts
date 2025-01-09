@@ -15,7 +15,7 @@ export class userEntity extends parentEntity{
 
     @Column({nullable:true})
     phone:string;
-
+    
     @Column({nullable:true})
     photo:string;
 

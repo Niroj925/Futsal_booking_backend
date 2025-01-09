@@ -1,8 +1,20 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+  Req,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { CreateAuthDto } from '../auth/dto/create-auth.dto';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { AtGuard } from 'src/common/guards/at.guard';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Controller('user')
 @ApiTags('user')
@@ -28,8 +40,11 @@ export class UserController {
     return this.userService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+  @Patch()
+  @UseGuards(AtGuard)
+  @ApiBearerAuth('access-token')
+  update(@Req() req: any, @Body() updateUserDto: CreateUserDto) {
+    const id = req.user.sub;
     return this.userService.update(id, updateUserDto);
   }
 

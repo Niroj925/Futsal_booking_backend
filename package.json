@@ -23,7 +23,9 @@
     "migration:generate": "npm run typeorm -- -d ./src/config/typeorm.config.ts migration:generate ./src/database/migrations/Migration_$(date +%Y%m%d%H%M%S)_$npm_config_name",
     "migration:create": "npm run typeorm -- migration:create ./src/database/migrations/$npm_config_name",
     "migration:revert": "npm run typeorm -- -d ./src/config/typeorm.config.ts migration:revert",
-    "migration:show": "npm run typeorm -- migration:show -d ./src/config/typeorm.config.ts"
+    "migration:show": "npm run typeorm -- migration:show -d ./src/config/typeorm.config.ts",
+    "seed": "ts-node -r tsconfig-paths/register src/database/seeds/seeder.ts",
+    "seed:reset": "ts-node -r tsconfig-paths/register src/database/seeds/seeder.ts --reset"
   },
   "dependencies": {
     "@nestjs/cache-manager": "^2.2.2",
@@ -53,7 +55,8 @@
     "redis": "^4.6.13",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
-    "typeorm": "^0.3.20"
+    "typeorm": "^0.3.20",
+    "typeorm-extension": "^3.6.3"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",

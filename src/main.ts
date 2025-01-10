@@ -1,19 +1,22 @@
+// main.ts
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { GlobalExceptionFilter } from './common/exceptions/globalException.filter';
 import helmet from 'helmet';
+import logger from './utils/logger.util';
+
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  
   app.enableCors({
     origin: "*",
     credentials: true
   });
   
   app.use(helmet());
-
   app.setGlobalPrefix('api/v1');
 
   // Swagger setup
@@ -44,12 +47,14 @@ async function bootstrap() {
       whitelist: true,
     }),
   );
+  
   await app.listen(4000);
 }
+
 bootstrap()
   .then(() => {
-    console.log('Server started in http://localhost:4000/api');
+    logger.info('Server started in http://localhost:4000/api');
   })
-  .catch((e) =>
-    console.error(`Error started while server starting as \n ${e.message}`),
-  );
+  .catch((error) => {
+    logger.error(`Error started while server starting: ${error.message}`);
+  });

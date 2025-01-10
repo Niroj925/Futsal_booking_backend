@@ -5,8 +5,6 @@ import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { GlobalExceptionFilter } from './common/exceptions/globalException.filter';
 import helmet from 'helmet';
-import logger from './utils/logger.util';
-
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -53,8 +51,8 @@ async function bootstrap() {
 
 bootstrap()
   .then(() => {
-    logger.info('Server started in http://localhost:4000/api');
+    console.log('Server started in http://localhost:4000/api');
   })
   .catch((error) => {
-    logger.error(`Error started while server starting: ${error.message}`);
+    console.log(`Error started while server starting: ${error.message}`);
   });

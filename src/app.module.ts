@@ -15,6 +15,7 @@ import databaseConfig from './config/db.config';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 import { LoggerMiddleware } from './common/middlewares/logger.middleware';
+import { ErrorLoggerMiddleware } from './common/middlewares/errorLogger.middleware';
 
 @Module({
   imports: [
@@ -44,16 +45,19 @@ import { LoggerMiddleware } from './common/middlewares/logger.middleware';
       provide: APP_GUARD,
       useClass: ThrottlerGuard
     }
-
-
   ],
 })
+
 // export class AppModule { }
+// export class AppModule implements NestModule {
+//   configure(consumer: MiddlewareConsumer) {
+//     consumer
+//       .apply(LoggerMiddleware)
+//       .forRoutes('*');
+//   }
+// }
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(LoggerMiddleware)
-      .forRoutes('*');
-  }
+    consumer.apply(ErrorLoggerMiddleware).forRoutes('*');
+  }                             
 }
-

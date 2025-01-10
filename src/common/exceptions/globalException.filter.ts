@@ -40,15 +40,6 @@ import {
       let status = HttpStatus.INTERNAL_SERVER_ERROR;
       let message = 'Internal server error';
   
-      // Logging the exception details
-      this.logger.error(
-        'Exception caught in GlobalExceptionFilter',
-        JSON.stringify({
-          message: exception.message || 'No message',
-          stack: exception.stack || 'No stack trace',
-          name: exception.name || 'No name',
-        }),
-      );
       
       console.log("########################### Exception ###################################");
       console.log(exception);

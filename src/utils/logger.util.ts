@@ -1,4 +1,3 @@
-// src/utils/logger.util.ts
 import { createLogger, format, transports } from 'winston';
 const { combine, timestamp, json, colorize } = format;
 

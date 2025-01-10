@@ -8,7 +8,7 @@ export class AppService {
   }
 
  async getNepseData(){
-    const res=await axios.get('https://chukul.com/api/data/v2/live-market');
+    const res=await axios.get('https://chukul.com');
  
     // return datas;
     return res.data

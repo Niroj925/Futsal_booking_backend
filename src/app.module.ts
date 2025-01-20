@@ -53,7 +53,7 @@ import { ErrorLoggerMiddleware } from './common/middlewares/errorLogger.middlewa
 //   configure(consumer: MiddlewareConsumer) {
 //     consumer
 //       .apply(LoggerMiddleware)
-//       .forRoutes('*');
+//       .forRoutes({path:'user',method:'POST'});
 //   }
 // }
 export class AppModule implements NestModule {

@@ -13,7 +13,7 @@ async function bootstrap() {
     origin: "*",
     credentials: true
   });
-
+  
     // Swagger setup
     const config = new DocumentBuilder()
     .setTitle('Futsal')
@@ -36,7 +36,6 @@ async function bootstrap() {
   
   app.use(helmet());
   app.setGlobalPrefix('api/v1');
-
 
   const httpAdapterHost = app.get(HttpAdapterHost);
   app.useGlobalFilters(new GlobalExceptionFilter(httpAdapterHost));

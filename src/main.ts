@@ -13,12 +13,9 @@ async function bootstrap() {
     origin: "*",
     credentials: true
   });
-  
-  app.use(helmet());
-  app.setGlobalPrefix('api/v1');
 
-  // Swagger setup
-  const config = new DocumentBuilder()
+    // Swagger setup
+    const config = new DocumentBuilder()
     .setTitle('Futsal')
     .setDescription('API Documentation for Futsal')
     .setVersion('1.0')
@@ -35,7 +32,11 @@ async function bootstrap() {
     )
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('docs', app, document);
+  
+  app.use(helmet());
+  app.setGlobalPrefix('api/v1');
+
 
   const httpAdapterHost = app.get(HttpAdapterHost);
   app.useGlobalFilters(new GlobalExceptionFilter(httpAdapterHost));

@@ -11,8 +11,8 @@ export class ErrorLoggerMiddleware implements NestMiddleware {
         method: tokens.method(req, res),
         url: tokens.url(req, res),
         status: tokens.status(req, res),
-        message: tokens['response-time'](req, res) + 'ms',
-        timestamp: tokens['date'](req, res, 'clf'),
+        message: res.locals.errorMessage || 'Unknown error', // Capture error message if available
+        // timestamp: tokens.date(req, res, 'clf'),
       });
     }
     return null; // Skip logging for non-error responses
@@ -30,6 +30,16 @@ export class ErrorLoggerMiddleware implements NestMiddleware {
   });
 
   use(req: Request, res: Response, next: NextFunction) {
+    // Intercept errors before response is sent
+    const originalSend = res.send;
+    res.send = function (body: any) {
+      if (res.statusCode >= 400) {
+        res.locals.errorMessage =
+          typeof body === 'object' && body.message ? body.message : String(body);
+      }
+      return originalSend.call(this, body);
+    };
+
     this.morganInstance(req, res, next);
   }
 }
